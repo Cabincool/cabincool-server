@@ -7,7 +7,7 @@ class Config:
     DEBUG = False
     JWT_SECRET_KEY = SECRET_KEY
     JWT_ACCESS_TOKEN_EXPIRES = False
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://yaoandy107:123qwe@localhost/cabincool'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://yaoandy107:123qwe@localhost/cabincool?charset=utf8mb4'
 
 
 class DevelopmentConfig(Config):
