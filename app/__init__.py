@@ -12,14 +12,12 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
 compress = Compress()
-
+default_app = firebase_admin.initialize_app()
 
 def create_app(config_name):
     app = Flask(__name__)
 
     app.config.from_object(config_by_name[config_name])
-
-    default_app = firebase_admin.initialize_app()
 
     # Set up extensions
     db.init_app(app)
