@@ -36,7 +36,7 @@ def create_app(config_name):
     app.register_blueprint(helloworld_api, url_prefix='/api')
 
     from .users import blueprint as user_api
-    app.register_blueprint(user_api, url_prefix='/api/users')
+    app.register_blueprint(user_api, url_prefix='/api')
 
     from .question import blueprint as question_api
     app.register_blueprint(question_api, url_prefix='/api/questions')
