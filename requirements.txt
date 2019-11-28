@@ -1,0 +1,15 @@
+flask
+flask_cors
+docker
+Flask-Compress
+Flask-Login
+Flask-Migrate
+Flask-Script
+Flask-SQLAlchemy
+Flask-WTF
+Flask-JWT-Extended
+flask-restplus
+gunicorn
+redis
+requests
+firebase-admin
