@@ -24,15 +24,14 @@ class Login(Resource):
         if firebase_user:
             user = User.query.filter(User.id == uid).first()
             access_token = create_access_token(identity=uid)
-            data = {'access_token': access_token}
             if not user:
-                new_user = User(email=firebase_user.email,
+                new_user = User(id=uid, email=firebase_user.email,
                                 username=firebase_user.display_name)
                 db.session.add(new_user)
                 db.session.commit()
-                make_response(jsonify(data), 200)
+                return make_response(jsonify(access_token=access_token), 200)
             else:
-                return make_response(jsonify(data), 200)
+                return make_response(jsonify(access_token=access_token), 200)
         else:
             return Response('', status=401)
 
