@@ -25,7 +25,7 @@ class Login(Resource):
             user = User.query.filter(User.id == uid).first()
             access_token = create_access_token(identity=uid)
             if not user:
-                new_user = User(id=uid, email=firebase_user.email,
+                new_user = User(uid=uid, email=firebase_user.email,
                                 username=firebase_user.display_name)
                 db.session.add(new_user)
                 db.session.commit()
