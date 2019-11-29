@@ -21,9 +21,16 @@ class Questions(Resource):
 
     @jwt_required
     def post(self):
-        title = request.form['title']
-        description = request.form['description']
-        question = Question(title=title, description=description)
+        content = request.json
+        title = content['title']
+        description = content['description']
+        category = content['category']
+        # remain_time = content['remain_time']
+        win_rule = content['winRule']
+        have_basic_vote = content['haveBasicVote']
+
+        question = Question(title=title, description=description, category=category,
+                            win_rule=win_rule, have_basic_vote=have_basic_vote)
         db.session.add(question)
         db.session.commit()
         return Response('', status=200)
@@ -58,6 +65,7 @@ class TheQuestion(Resource):
         except Exception as e:
             print(e)
             return Response('', status=400)
+
 
 @api.route('/<id>/donate')
 class Donate(Resource):
