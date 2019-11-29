@@ -25,11 +25,13 @@ class Answers(Resource):
     def post(self, question_id):
         content = request.json
         link = content['link']
+        description = content['description']
 
         claims = get_jwt_claims()
         uid = claims['uid']
 
-        answer = Answer(user_id=uid, question_id=question_id, link=link)
+        answer = Answer(user_id=uid, question_id=question_id,
+                        link=link, description=description)
         db.session.add(answer)
         db.session.commit()
         return Response('', status=200)
