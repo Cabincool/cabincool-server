@@ -3,7 +3,6 @@ from flask_restplus import Api, Resource
 from flask_jwt_extended import jwt_required, get_jwt_claims
 import json
 from app.model.question import Question
-from app.util.date_encoder import DateEncoder
 from app import db
 
 
