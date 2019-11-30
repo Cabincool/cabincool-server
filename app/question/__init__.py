@@ -3,8 +3,9 @@ from flask_restplus import Api, Resource
 from flask_jwt_extended import jwt_required, get_jwt_claims
 import json
 from app.model.question import Question
-
+from app.util.date_encoder import DateEncoder
 from app import db
+
 
 blueprint = Blueprint('questions', __name__)
 api = Api(blueprint)
@@ -40,7 +41,7 @@ class Questions(Resource):
 class TheQuestion(Resource):
     def get(self, id):
         question = Question.query.filter(Question.id == id).first()
-        return Response(json.dumps(question.as_dict()), status=200)
+        return Response(json.dumps(question.as_dict(), cls=DateEncoder), status=200)
 
     @jwt_required
     def put(self, id):
