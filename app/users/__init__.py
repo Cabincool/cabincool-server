@@ -22,7 +22,7 @@ class Login(Resource):
         firebase_user = auth.get_user(uid)
 
         if firebase_user:
-            user = User.query.filter(User.id == uid).first()
+            user = User.query.filter(User.uid == uid).first()
             access_token = create_access_token(identity=uid)
             if not user:
                 new_user = User(uid=uid, email=firebase_user.email,
