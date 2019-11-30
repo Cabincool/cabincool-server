@@ -29,9 +29,9 @@ class Login(Resource):
                                 username=firebase_user.display_name)
                 db.session.add(new_user)
                 db.session.commit()
-                return make_response(jsonify(access_token=access_token), 200)
+                return make_response(jsonify(accessToken=access_token), 200)
             else:
-                return make_response(jsonify(access_token=access_token), 200)
+                return make_response(jsonify(accessToken=access_token), 200)
         else:
             return Response('', status=401)
 
