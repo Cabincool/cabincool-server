@@ -41,7 +41,7 @@ class Questions(Resource):
 class TheQuestion(Resource):
     def get(self, id):
         question = Question.query.filter(Question.id == id).first()
-        return Response(json.dumps(question.as_dict(), cls=DateEncoder), status=200)
+        return Response(json.dumps(question.as_dict(), default=str), status=200)
 
     @jwt_required
     def put(self, id):
